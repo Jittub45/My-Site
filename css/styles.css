@@ -44,6 +44,32 @@ a:hover {
   color: #EAF6F6;
 }
 
+.nav-bar ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-bar {
+  margin-left: 0;
+  text-align: right;
+
+}
+.nav-list {
+    display: inline-block;
+    border-radius:5px;
+}
+.nav-list:hover {
+  background-color: #4dffc3;
+}
+.nav-list a::after {
+    display: inline-block;
+    color: #000;
+    content: '>';
+    font-size: 80%;
+    font-weight: bold;
+    padding: 0 3px;
+}
+
 .skills {
   width: 50%;
   margin:100px auto 100px auto;
@@ -135,3 +161,4 @@ a:hover {
   background-image: linear-gradient(to bottom, #fc3c3c, #3437d9);
   text-decoration: none;
 }
+
