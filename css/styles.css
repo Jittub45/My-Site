@@ -5,6 +5,9 @@ body {
   font-family: 'Merriweather', serif;
   font-size: 150%;
 }
+.body-1{
+  margin: 0;
+}
 
 p{
   line-height: 2;
@@ -54,6 +57,14 @@ a:hover {
   text-align: right;
 
 }
+#logo {
+  display: inline-block;
+  margin: 15px; /* margin: 20px was off */
+  float: left;
+  height: 60px;
+  width: auto; /* correct proportions to specified height */
+  border-radius: 50%; /* makes it a circle */
+}
 .nav-list {
     display: inline-block;
     border-radius:5px;
@@ -90,7 +101,7 @@ a:hover {
 .top-container {
   background-color: #E4F9F5;
   position: relative;
-  padding-top: 100px;
+  padding-top: 10px;
 }
 .middle-container{
   margin: 100px 0;
@@ -160,5 +171,3 @@ a:hover {
   background-image: -o-linear-gradient(top, #fc3c3c, #3437d9);
   background-image: linear-gradient(to bottom, #fc3c3c, #3437d9);
   text-decoration: none;
-}
-
