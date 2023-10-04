@@ -8,9 +8,10 @@
   <link rel="icon" href="favicon!.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Font Awesome link -->
-    <script src="https://kit.fontawesome.com/38ead81663.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+    <!-- Font Awesome link -->
+  <script src="https://kit.fontawesome.com/38ead81663.js" crossorigin="anonymous"></script>
+
 
 </head>
 <body class="body-1">
@@ -25,9 +26,14 @@
         <li class="nav-list"> <a href="#">Contribute</a></li>
       </ul>
     </nav>
+
+    <div class="container">
+      <p><span class="cursor"> </span></p>
+  </div>
+
     <img class="top-cloud" src="Images/birds-1.png" alt="Cloud-image" style="margin-top: 200px;">
     <h1>I'm Jitendra.</h1>
-    <h2>a web designer.</h2>
+    <h2><span class="typed-text"></span></h2>
     <img class="bottom-cloud" src="Images/cloud.png" alt="Cloud-image">
     <img src="Images/mountain-3.png" alt="mountain-image">
   </div>
@@ -62,9 +68,52 @@
   <div class="bottom-container">
     <a class="footer-link" href="https://www.linkedin.com/in/jitendrakumar-/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
     <a class="footer-link" href="https://twitter.com/jittub45"><i class="fa-brands fa-square-x-twitter"></i> Twitter</a>
-    <a class="footer-link" href="https://jittub45.github.io/cv/"><i class="fa-solid fa-arrow-right"></i> Website</a>
+    <a class="footer-link" href="https://jittub45.github.io/cv/"><i class="fa-solid fa-house"></i> Website</a>
     <p class="copyright">© 2022 Jitendr Kumar. All rights reserved.</p>
   </div>
+
+  <script>const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+    
+    const textArray = ["Web Developer", "AI & ML Engineer  ", "Web Designer  ", "Full Stack Developer "];
+    const typingDelay = 150;
+    const erasingDelay = 150;
+    const newTextDelay = 0; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
+    
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } 
+      else {
+        cursorSpan.classList.remove("typing");
+        setTimeout(erase, newTextDelay);
+      }
+    }
+    
+    function erase() {
+      if (charIndex > 0) {
+        if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } 
+      else {
+        cursorSpan.classList.remove("typing");
+        textArrayIndex++;
+        if(textArrayIndex>=textArray.length) textArrayIndex=0;
+        setTimeout(type, typingDelay + 10);
+      }
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+      if(textArray.length) setTimeout(type);
+    });</script>
+
 
 </body>
 
