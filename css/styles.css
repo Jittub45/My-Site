@@ -68,6 +68,7 @@ a:hover {
 .nav-list {
     display: inline-block;
     border-radius:5px;
+    padding: 0 30px;
 }
 .nav-list:hover {
   background-color: #4dffc3;
