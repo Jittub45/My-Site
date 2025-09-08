@@ -5,12 +5,15 @@
   <meta charset="utf-8">
   <title>Jitendra</title>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" href="favicon!.ico">
+  <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
-
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/38ead81663.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="body-1">
   <div class="top-container">
     <nav class="logo">
@@ -18,35 +21,41 @@
     </nav>
     <nav class="nav-bar">
       <ul>
-        <li class="nav-list"> <a href="#">Home</a></li>
-        <li class="nav-list"> <a href="#">Hire</a></li>
-        <li class="nav-list"> <a href="#">Contribute</a></li>
+        <li class="nav-list">Home</li>
+        <li class="nav-list">Hire</li>
+        <li class="nav-list">Contribute</li>
       </ul>
     </nav>
+
+    <div class="container">
+      <p><span class="cursor"></span></p>
+    </div>
+
     <img class="top-cloud" src="Images/birds-1.png" alt="Cloud-image" style="margin-top: 200px;">
     <h1>I'm Jitendra.</h1>
-    <h2>a web designer.</h2>
+    <h2><span class="typed-text"></span></h2>
     <img class="bottom-cloud" src="Images/cloud.png" alt="Cloud-image">
     <img src="Images/mountain-3.png" alt="mountain-image">
   </div>
+
   <div class="middle-container">
     <div class="profile">
-      <img class="profile" src="Images/Jitendra!!.png"; height="200px"; width="200px"; alt="profile-pic">
+      <img class="profile" src="Images/Jitendra!!.png" height="200" width="200" alt="profile-pic">
       <h2>Hello.</h2>
-      <p class="profile-para">I have started my journey towards becoming a WEB DESIGNER. I am very excited to learn and grow in this field.</p>
+      <p class="profile-para">I have started my journey towards becoming an AI & ML Engineer. I am very excited to learn and grow in this field.</p>
     </div>
     <hr>
     <div class="skills">
       <h2>My Skills.</h2>
       <div class="skill-row">
-        <img class="com-science" src="Images/com-science.png";alt="skill-pic">
+        <img class="com-science" src="Images/com-science.png" alt="skill-pic">
         <h3>PROGRAMMER</h3>
-        <p>I am good at programming languages. I have decent knowledge of PYTHON, JAVA, and C++ and am continuing to gain more and more language skills in this field. </p>
+        <p>I am good at programming languages. I have decent knowledge of PYTHON, JAVA, and C++ and am continuing to gain more and more language skills in this field.</p>
       </div> <br>
       <div class="skill-row">
-        <img class="basketball" src="Images/basketball.png" alt="kill-pics">
+        <img class="basketball" src="Images/basketball.png" alt="skill-pics">
         <h3>BASKETBALL</h3>
-        <p>The best way for me to relax is to spend time on the ground. I play basketball in my free time and have done well in this spot.</p>
+        <p>The best way for me to relax is to spend time on the ground. I play basketball in my free time and have done well in this sport.</p>
       </div>
     </div>
     <hr>
@@ -57,18 +66,55 @@
       <a class="btn" href="mailto:jitendrakumaryadav2003@gmail.com">CONTACT ME</a>
     </div>
   </div>
+
   <div class="bottom-container">
-    <img class="linkedin" src="Images/linkedin_logo.png" alt="linkedin_logo" width="20" height="20" >
-    <a class="footer-link" href="https://www.linkedin.com/in/jitendrakumar-/">LinkedIn</a>
-    <img class="twitter" src="Images/twitter_logo.png" alt="twitter_logo" width="20" height="20">
-    <a class="footer-link" href="https://twitter.com/jittub45">Twitter</a>
-    <img class="website" src="Images/logo.png" alt="logo" width="20" height="20">
-    <a class="footer-link" href="https://jittub45.github.io/cv/">Website</a>
-    <p class="copyright">© 2022 Jitendr Kumar. All rights reserved.</p>
+    <a class="footer-link" href="https://www.linkedin.com/in/jitendrakumar-/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    <a class="footer-link" href="https://twitter.com/jittub45"><i class="fa-brands fa-square-x-twitter"></i> Twitter</a>
+    <a class="footer-link" href="https://jittub45.github.io/cv/"><i class="fa-solid fa-house"></i> Website</a>
+    <p class="copyright">© 2022 Jitendra Kumar. All rights reserved.</p>
   </div>
 
-  <!--Image icons added by Curtis Decker-->
+  <script>
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
 
+    const textArray = ["Web Developer", "AI & ML Engineer", "Full Stack Developer"];
+    const typingDelay = 150;
+    const erasingDelay = 150;
+    const newTextDelay = 1000; // Delay between texts
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursorSpan.classList.remove("typing");
+        setTimeout(erase, newTextDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursorSpan.classList.remove("typing");
+        textArrayIndex++;
+        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+        setTimeout(type, typingDelay + 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      if (textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+  </script>
 
 </body>
 
